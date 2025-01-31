@@ -105,7 +105,7 @@ button:hover{
     right: 10vw;
     background-color: rgb(255 247 227);
     min-height: 7rem;
-    box-shadow: 0px 0px 11px 0px #909090
+    box-shadow: 0px 0px 11px 0px #909090;
     font-size: 20px;
     font-style: italic;
 }
