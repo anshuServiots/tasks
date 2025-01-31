@@ -184,6 +184,55 @@ header button , .hero button{
 #cardTwo p , #cardTwo h2{
     padding-right:20px ;
 }
+
+#sectionFive{
+    padding: 0 3rem;
+}
+
+#sectionFive h2{
+    margin: 2rem 0;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+#sectionFive p{
+    margin: 2rem 0;
+    color: rgb(85, 84, 84);
+}
+
+.sectionFiveBox{
+    border: 1px solid rgb(255 208 89);
+    background-color: rgb(255 247 227);
+    padding: 20px;
+    border-radius: 20px;
+   
+}
+
+.SectionFiveImgWrapper{
+    border: 2px solid rgb(255 208 89);
+    background-color: #fff;
+    width: fit-content;
+    padding: 1rem 1.2rem;
+    border-radius: 10px;
+}
+
+.sectionFiveBoxH2{
+    font-size: 20px !important;
+    margin: 1rem 0 !important;
+}
+
+.sectionFiveBoxP{
+    font-family: 16px !important;
+    margin: 1rem 0 !important;
+}
+
+.sectionFiveBoxWrapper{
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 1rem;
+   
+}
+
 @media (max-width : 700px) {
     #hamburger{
         display: block;
