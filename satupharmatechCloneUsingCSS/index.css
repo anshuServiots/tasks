@@ -25,7 +25,9 @@ nav ul{
 }
 nav ul li{
     list-style-type: none;
+    cursor: pointer;
 }
+
  span{
     color: rgb(20 184 166);
 }
@@ -36,6 +38,16 @@ header button , .hero button , form button{
     background-color:rgb(20 184 166);
     color: white;
     border-radius: 5px;
+}
+
+button{
+    transition: all 0.5s;
+    cursor: pointer;
+}
+button:hover{
+    background-color: #fff;
+    color:rgb(20 184 166) ;
+    border: 1px solid black;
 }
 
 #hamburger{
@@ -93,6 +105,8 @@ header button , .hero button , form button{
     background-color: rgb(255 247 227);
     min-height: 7rem;
     box-shadow: 0px 0px 5px 0px;
+    font-size: 20px;
+    font-style: italic;
 }
 
 #sectionOne{
@@ -190,7 +204,9 @@ header button , .hero button , form button{
 #sectionFive{
     padding: 0 3rem;
 }
-
+.sectionFiveBox:hover{
+    transform: scale(1.02);
+}
 #sectionFive h2{
     margin: 2rem 0;
     font-size: 30px;
@@ -207,7 +223,7 @@ header button , .hero button , form button{
     background-color: rgb(255 247 227);
     padding: 20px;
     border-radius: 20px;
-   
+    transition: all 0.5s;
 }
 
 .SectionFiveImgWrapper{
@@ -338,9 +354,42 @@ form button{
         margin-bottom: 10rem;
     }
     .sectionThreeBox{
-        padding: 30px;
+        padding: 30px; 
     }
     .sectionOneWrapper {
         background-position-x: left;
+    }
+
+    .hero button{
+        width: fit-content;
+    }
+    .hero{
+        justify-content: center;
+        align-items: center;
+    }
+
+    .sectionThreeBoxInvisible{
+        display: none;
+    }
+    .sectionFiveBoxWrapper{
+        display: block;
+       
+    }
+    .sectionFiveBox{
+        margin-bottom: 20px;
+    }
+
+    #floatingBlock{
+        padding: 1rem;
+    }
+
+    #floatingBlock{
+        font-size: 15px;
+    }
+}
+
+@media (max-width : 500px){
+    section{
+        padding: 10px !important;
     }
 }
