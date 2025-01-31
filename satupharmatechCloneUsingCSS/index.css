@@ -41,3 +41,157 @@ header button , .hero button{
     display: none;
 }
 
+.sectionOneWrapper{
+    background-image: url(/images/HeroImage.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-x: right;
+}
+
+.hero h1{
+    font-size: 3rem;
+    line-height: 4rem;
+}
+.hero p {
+    font-weight: 300;
+    max-width: 800px;
+    font-size: 18px;
+    margin-top: 1rem;
+}
+.hero{
+    padding: 5rem 3rem 0 3rem;
+    text-align: start;
+}
+.line{
+    border: 2px solid rgb(79 181 185 );
+    width: 3rem;   
+}
+.lineWrapper{
+    height: 3rem;
+    display: flex;
+    align-items: center;
+}
+
+.hero button{
+    margin-top: 2rem;
+    margin-bottom: 5rem;
+}
+
+#floatingBlock{
+    display: flex;
+    justify-content: center;
+    gap: 1.2rem;
+    height: 5rem;
+    border-radius: 10px;
+    align-items: center;
+    width: 80vw;
+    position: absolute;
+    bottom: 10px;
+    bottom: -2.5rem;
+    right: 10vw;
+    background-color: rgb(255 247 227);
+    min-height: 7rem;
+}
+
+#sectionOne{
+    position: relative;
+}
+#sectionTwo{
+    margin: 10rem 3rem 0 3rem;
+}
+
+#sectionTwo h2{
+    font-size: 30px;
+}
+
+#sectionTwo p{
+    color: rgb(75 85 99);
+    margin-top: 1rem;
+    max-width: 800px;
+}
+
+#sectionThree h2{
+    margin-top: 3rem;
+}
+
+.sectionThreeBoxWrapper{
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+}
+
+#sectionThree{
+    padding:  0 3rem;
+}
+
+.sectionThreeBox{
+    border: 2px solid rgb(194, 194, 194);
+    padding: 1rem;
+    border-radius: 10px;
+    height: 14rem;
+    overflow: hidden;
+}
+
+.sectionThreeBox h3{
+    font-size: 24px;
+    margin-bottom: 5rem;
+    margin-top: 3rem;
+}
+.sectionThreeBox .lineWrapper{
+    height: 3px;
+}
+
+.sectionThreeBoxInvisible{
+    border: 1px solid white;
+}
+
+#sectionFour{
+    padding: 0 3rem;
+    margin-top: 4rem;
+}
+
+#sectionFour h2{
+    margin-bottom: 2rem;
+}
+.card{
+    display: flex;
+    margin-bottom: 3rem;
+    align-items: center;
+}
+.card div{
+    padding-left: 10px;
+}
+.card div h3{
+    font-size: 24px;
+    color: rgb(37, 144, 148);
+}
+.card div p{
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+#sectionFourCardOne img{
+    width: 65%;
+    height: fit-content;
+    border-radius: 10px;
+}
+
+#cardTwo {
+    text-align: right;
+    
+}
+#cardTwo p , #cardTwo h2{
+    padding-right:20px ;
+}
+@media (max-width : 700px) {
+    #hamburger{
+        display: block;
+    }
+    nav{
+        display: none;
+    }
+    header button {
+        display: none;
+    }
+}

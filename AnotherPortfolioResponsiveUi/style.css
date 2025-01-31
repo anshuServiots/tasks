@@ -45,6 +45,7 @@ section{
     text-align: center;
     max-width: 800px;
     font-size: 70px;
+    line-height: 69px;
 }
 #section1{
     min-height: 300px;
@@ -318,7 +319,7 @@ span{
  }
  
  .section5Box{
-    width: 100%;
+    width: -webkit-fill-available;
  }
  .section3Box{
     width: fit-content;
