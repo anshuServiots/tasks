@@ -22,14 +22,20 @@ nav ul{
     justify-content: center;
     align-items: center;
     gap: 30px;
+    transition: all 2s;
 }
 nav ul li{
     list-style-type: none;
     cursor: pointer;
 }
-
+nav ul li:hover{
+    color:  rgb(20 184 166);
+}
  span{
     color: rgb(20 184 166);
+}
+nav input{
+    display: none;
 }
 header button , .hero button , form button{
     font-size: 20px;
@@ -38,6 +44,13 @@ header button , .hero button , form button{
     background-color:rgb(20 184 166);
     color: white;
     border-radius: 5px;
+}
+nav label{
+    display: none;
+    cursor: pointer;
+}
+nav{
+    transition: all 1s;
 }
 
 /* For transition effect */
@@ -48,11 +61,11 @@ button{
 button:hover{
     background-color: #fff;
     color:rgb(20 184 166) ;
-    border: 1px solid black;
+    
 }
 
-#hamburger{
-    display: none;
+:checked + ul{
+    display: block;
 }
 
 .sectionOneWrapper{
@@ -107,17 +120,20 @@ button:hover{
     min-height: 7rem;
     box-shadow: 0px 0px 11px 0px  #cfcfcf;
     font-style: italic;
+    font-size: 20px;
+    font-weight: 300;
 }
 
 #sectionOne{
     position: relative;
 }
 #sectionTwo{
-    margin: 10rem 3rem 0 3rem;
+    margin: 6rem 3rem 0 3rem;
 }
 
 #sectionTwo h2{
     font-size: 30px;
+    font-weight: 600;
 }
 
 #sectionTwo p{
@@ -153,6 +169,7 @@ button:hover{
     font-size: 24px;
     margin-bottom: 5rem;
     margin-top: 3rem;
+    font-weight: 600;
 }
 .sectionThreeBox .lineWrapper{
     height: 3px;
@@ -169,6 +186,8 @@ button:hover{
 
 #sectionFour h2{
     margin-bottom: 2rem;
+    font-size: 30px;
+    font-weight: 600;
 }
 .card{
     display: flex;
@@ -181,6 +200,7 @@ button:hover{
 .card div h3{
     font-size: 24px;
     color: rgb(37, 144, 148);
+    padding-right: 20px;
 }
 .card div p{
     font-size: 16px;
@@ -267,9 +287,13 @@ button:hover{
     display: flex;
     padding: 3rem;
     justify-content: space-between;
+    border: 1px solid rgb(203, 202, 202);
+    margin: 0 3rem;
+    border-radius: 10px;
+    background-color: #FCFCFC;
 }
 #sectionSeven img{
-    width: 47%;
+    width: 56%;
     margin-left: 20px;
 }
 
@@ -284,8 +308,17 @@ form{
     width: -webkit-fill-available;;
 }
 
-form input{
+form {
+    color: #444444;
+    
+}
+form input , textarea{
     height: 40px;
+    padding: 10px;
+}
+
+textarea{
+    height: 130px;
 }
 
 form button{
@@ -293,8 +326,90 @@ form button{
     font-size: 18px;
 }
 
+.footerWrapper{
+    display: grid;
+    grid-template-columns: 2fr 4fr;
+    padding: 3rem;
+    border-top: 1px solid rgb(178, 177, 177);
+    border-bottom: 1px solid rgb(178, 177, 177);
+    margin-top: 5rem;
+    font-size: 14px;
+    color: #4f4e4e;
+    font-weight: 300;
+}
+
+.footerTwo{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
 
 
+.footerTwo ul li:first-child{
+    font-weight: 400;
+    color: #000000;
+    margin-top: 0.5rem;
+    font-size: 16px;
+   
+}
+
+.footerTwo ul li{
+    list-style-type: none;
+}
+
+.lastDiv{
+    padding: 0 3rem;
+}
+.lastDiv ul{
+    display: flex;
+    gap: 1rem;
+    padding: 0;
+    margin: 1rem 0;
+    justify-content: center;
+}
+
+.lastDiv ul li{
+    list-style-type: none;
+    color: #4f4e4e;
+    font-weight: 300;
+}
+#emailAddress ul li , #mobileNo ul li{
+    color: #4f4e4e;
+    font-size: 14px;
+}
+li{
+    cursor: pointer;
+}
+
+.lastDiv ul li:hover{
+    color: #000000;
+}
+#mobileNo{
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+#emailAddress{
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+#contactUs{
+    width: 70%;
+}
+
+.horizontalLine{
+    height: 1.5rem;
+    border: 1px solid rgb(92, 91, 91);
+}
+
+#aboutUs li:first-child{
+    margin-bottom: 8px;
+}
+#ourServices{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
 @media (max-width : 1177px){
     .card{
         display: block;
@@ -306,6 +421,10 @@ form button{
     }
     #sectionSeven img{
         display: none;
+    }
+    #sectionFour h2{
+        margin-bottom: 0;
+        
     }
 }
 
@@ -321,18 +440,13 @@ form button{
     .hero h1{
         font-size: 35px;
     }
+    .sectionThreeBoxInvisible{
+        display: none;
+    }
 }
 
 @media (max-width : 700px) {
-    #hamburger{
-        display: block;
-    }
-    nav{
-        display: none;
-    }
-    header button {
-        display: none;
-    }
+   
     .hero p{
         display: none;
 
@@ -386,6 +500,7 @@ form button{
     #floatingBlock{
         font-size: 15px;
     }
+    
 }
 
 @media (max-width : 500px){
@@ -397,10 +512,25 @@ form button{
         margin: 10rem 1rem 0 1rem;
     }
     #floatingBlock{
-        height: 8rem;
+        height: 9rem;
     }
     .hero button{
         margin-bottom: 7rem;
+    }
+    .footerTwo{
+        display: block;
+    }
+    #sectionSeven{
+        margin: 0 1rem;
+    }
+    .footerWrapper{
+        padding: 3rem 1rem;
+    }
+    .lastDiv{
+        padding: 0 1rem;
+    }
+    #cardTwo{
+        margin-bottom: 0 !important;
     }
 }
 
@@ -412,5 +542,58 @@ form button{
 @media (max-width : 750px){
     #floatingBlock{
         flex-wrap: wrap;
+    }
+}
+
+@media (max-width : 990px){
+    .footerWrapper{
+        grid-template-columns: auto;
+        gap: 3rem;
+    }
+    .footerTwo{
+        border-top: 1px solid rgb(149, 149, 149);
+        padding-top: 1rem;
+    }
+
+    .footerTwo ul{
+        padding: 0;
+    }
+}
+
+@media (max-width : 800px){
+    #mobileNo , #emailAddress{
+        grid-template-columns: auto;
+    }
+    #hamburger{
+        display: block;
+    }
+    nav ul{
+        display: none;
+    }
+   
+    nav label{
+        display: block;
+    }
+    nav ul{
+        position: absolute;
+        z-index: 1;
+        background-color: #fff;
+        top: 15vh;
+        right: 3rem;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 4px rgb(129, 129, 129);
+    }
+    .horizontalLine{
+        display: none;
+    }
+    #floatingBlock{
+        font-size: 18px;
+    }
+
+    nav ul li{
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
     }
 }
