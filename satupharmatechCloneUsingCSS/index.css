@@ -105,8 +105,7 @@ button:hover{
     right: 10vw;
     background-color: rgb(255 247 227);
     min-height: 7rem;
-    box-shadow: 0px 0px 11px 0px #909090;
-    font-size: 20px;
+    box-shadow: 0px 0px 11px 0px  #cfcfcf;
     font-style: italic;
 }
 
@@ -396,5 +395,22 @@ form button{
     }
     #sectionTwo {
         margin: 10rem 1rem 0 1rem;
+    }
+    #floatingBlock{
+        height: 8rem;
+    }
+    .hero button{
+        margin-bottom: 7rem;
+    }
+}
+
+@media (max-width : 350px){
+    #floatingBlock{
+        font-size: 10px;
+    }
+}
+@media (max-width : 750px){
+    #floatingBlock{
+        flex-wrap: wrap;
     }
 }
