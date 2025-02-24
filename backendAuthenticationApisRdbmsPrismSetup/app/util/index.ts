@@ -40,19 +40,31 @@ const validateUploadPhoto  = [
     body('photoTags').isLength({min : 5 , max : 30}).withMessage('photo tags size should be between 5 and 30') ,
     
 ]
+const validateComment  = [
+   
+    body('photoId').notEmpty().withMessage('pls send photo Id') ,
+    body('photoId').isLength({min : 7 , max : 80}).withMessage('send full photo Id') ,
+   
+    body('comment').notEmpty().withMessage('pls send comment') ,
+]
+const validateLike  = [
+   
+    body('photoId').notEmpty().withMessage('pls send photo Id') ,
+    body('photoId').isLength({min : 7 , max : 80}).withMessage('send full photo Id') ,
+]
 
 function defaultRes(
     res : Response,
     status : number,
     msg : string , 
-    err ? : any,
+   
     data ? : any
 ){
     return res.status(status).json({
         status : status ,
         message : msg,
         data : data || null ,
-        err : err || null
+        
     })
 }
 
@@ -68,6 +80,17 @@ class CustomError extends Error {
     }
 
 }
+class PathDosentExistError extends Error {
+    statusCode: number;
+    message: any ;
+
+    constructor(message: any, statusCode: number) {
+        super(message); 
+        this.statusCode = statusCode;
+        this.message = message;
+    }
+
+}
 
 
-export  {validateCreateAccountReq , validateUserLoginReq , defaultRes , CustomError , validateUploadPhoto}
+export  {validateCreateAccountReq , validateUserLoginReq , defaultRes , CustomError , validateUploadPhoto , PathDosentExistError , validateComment , validateLike }

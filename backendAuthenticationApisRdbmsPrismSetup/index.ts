@@ -9,8 +9,10 @@ const app = express()
 app.use(express.json())
 app.use('/' , router)
 
-app.use(wrongPath)
-app.use(defaultErr)
+
+router.use(wrongPath)
+router.use(defaultErr)
+
 
 
 const PORT = getEnvVariables().PORT

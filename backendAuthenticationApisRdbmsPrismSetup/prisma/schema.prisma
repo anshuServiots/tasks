@@ -20,6 +20,7 @@ model User {
   userPassword String
   photos       Photos[]
   comments     Comments[]
+  photoLikes   PhotoLikes[]
 }
 
 model Photos {
@@ -30,17 +31,29 @@ model Photos {
   photoTags String[]
   likes     Int @default(0)
   userId    String
-  user      User       @relation(fields: [id], references: [id])
+  user      User       @relation(fields: [userId], references: [id])
   comments  Comments[]
+  photoLikes PhotoLikes[]
 }
 
 model Comments {
   id      String   @id @default(uuid())
   comment String
-  time    DateTime
-  likes   Int
+  time    DateTime @default(now())
+  likes   Int @default(0)
   photoId String
   userId String
   photos  Photos   @relation(fields: [photoId], references: [id])
   users   User   @relation(fields: [userId], references: [id])
+}
+
+model PhotoLikes{
+  id      String   @id @default(uuid())
+  time    DateTime @default(now())
+  photoId String
+  userId String
+  photos  Photos   @relation(fields: [photoId], references: [id])
+  users   User   @relation(fields: [userId], references: [id])
+
+  @@unique([userId , photoId])
 }

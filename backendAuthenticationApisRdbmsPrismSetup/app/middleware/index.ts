@@ -1,25 +1,27 @@
 import {  Response , Request , NextFunction  } from "express";
-import { CustomError } from "../util";
+import { CustomError  } from "../util";
 import { json } from "stream/consumers";
-import { defaultRes } from "../util";
+import { defaultRes , PathDosentExistError } from "../util";
 import  jwt  from "jsonwebtoken";
 import { getEnvVariables } from "../../getenv";
 
 const SECRET_KEY = getEnvVariables().SECRET_KEY as string
 
 function defaultErr(err : any ,  req : Request , res : Response  , next :NextFunction ){
+console.log("🚀 ~ defaultErr ~ err:", err)
 
-    if (err instanceof CustomError) {
+    if (err instanceof CustomError || err instanceof PathDosentExistError) {
       
         res.status(err.statusCode).json({ 
             msg: err.message,
             error: err
         });
-    } else {
+    }
+    else {
        
         res.status(500).json({
             msg: 'An unexpected error occurred.',
-            error: err.message || 'Internal Server Error'
+            error: 'Internal Server Error'
         });
     }
 
@@ -36,9 +38,7 @@ function checkAuth(req : Request  , res : Response , next : NextFunction){
     if(!authHeader || !authHeader.startsWith('Bearer ')){
         throw new CustomError("unauthorized, pls enter valid token" , 400)
     }
-   
-    console.log(token)
-    
+  
     try{
         const jwtPayload = jwt.verify(token , SECRET_KEY)  
         req.body.user = jwtPayload 
@@ -51,16 +51,16 @@ function checkAuth(req : Request  , res : Response , next : NextFunction){
 }
 
 
-function wrongPath(err : any ,  req : Request , res : Response  , next :NextFunction ){
-    console.log('=---------------' , err)
-    if(!err){
-        console.log(" ------------------")
-        throw new CustomError('path does not exist' , 400)
-        
-    }else{
-        next(err)
-    }
+function wrongPath(  req : Request , res : Response  , next :NextFunction ){
     
+    if (!res.headersSent) {
+
+        const error = new PathDosentExistError('path does no exist , go home' , 404)
+         
+        next(error); // Pass the error to the error handler
+    } else {
+        next(); // Continue without modifying the response
+    }
 }
 
 

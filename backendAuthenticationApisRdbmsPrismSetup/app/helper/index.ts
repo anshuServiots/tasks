@@ -1,4 +1,5 @@
 const { validationResult } = require("express-validator");
+import bcrypt from "bcrypt"
 import { CustomError } from "../util";
 
 //import {validationResult} from "express-validator"
@@ -17,5 +18,12 @@ import { Request } from "express";
   }
 };
 
+async function hashPassword(plainPassword : string){
+ return await bcrypt.hash(plainPassword , 10)
+}
 
-export  {checkValidation}
+async function unHashPassword(plainPassword : string , hashedPassword : string){
+ return await bcrypt.compare(plainPassword , hashedPassword)
+}
+
+export  {checkValidation , hashPassword , unHashPassword}

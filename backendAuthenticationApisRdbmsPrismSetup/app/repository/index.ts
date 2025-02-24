@@ -9,7 +9,14 @@ async function createAccount(userName : string , userEmail : string , userPasswo
             userName,
             userEmail,
             userPassword
+        },
+        select:{
+            userEmail : true,
+            userName : true,
+            id : true
+
         }
+        
     })
 }
 
@@ -19,6 +26,14 @@ async function loginUser( userEmail : string , userPassword : string){
         where:{
             userEmail , 
             userPassword
+        }
+    })
+}
+async function isUserExist( userEmail : string ){
+
+    return await prisma.user.findUnique({
+        where:{
+            userEmail 
         }
     })
 }
@@ -34,5 +49,46 @@ async function uploadPhoto(photo : string , photoTitle : string , photoDesc : st
         }
     })
 }
+async function addComment(userId : string , photoId : string , comment : string ){
 
-export {createAccount, loginUser , uploadPhoto}
+    return await prisma.comments.create({
+        data:{
+           userId,
+           photoId,
+           comment
+        }
+    })
+}
+
+async function incrementPhotoLikesCount( photoId : string  ){
+
+    return await prisma.photos.update({
+        data:{
+           likes : {increment : 1}
+        },
+        where:{
+            id : photoId
+        }
+    })
+}
+
+async function addEntryToPhotoLikesTable(userId : string , photoId : string  ){
+
+    return await prisma.photoLikes.create({
+        data:{
+           userId,
+           photoId,
+        }
+    })
+}
+
+async function isPhotoLiked(userId : string , photoId : string  ){
+
+    return await prisma.photoLikes.findUnique({
+        where:{
+           userId_photoId : {userId , photoId}
+        }
+    })
+}
+
+export {createAccount, loginUser , uploadPhoto , isUserExist , addComment , incrementPhotoLikesCount , addEntryToPhotoLikesTable , isPhotoLiked }
