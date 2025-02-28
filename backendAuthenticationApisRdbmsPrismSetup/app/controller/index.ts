@@ -22,12 +22,22 @@ async function HandelCreateUserAccount(req : Request , res : Response , next : N
 
         const { userName, userEmail, userPassword }: { userName: string, userEmail: string, userPassword: string } = req.body;
 
+        const isUserExistRes = await isUserExist(userEmail)
+       
+        if(isUserExistRes){
+            throw new CustomError("user with this email already exist" , 409)
+        }
         const hashedPassword = await hashPassword(userPassword)
 
         const createAccountRes = await createAccount(userName , userEmail , hashedPassword)
         
+        const dataTOMakeToken = {
+            userId : createAccountRes.id,
+            userName : createAccountRes.userName
+        } 
+        const tokenToSend = jwt.sign( dataTOMakeToken , SECRET_KEY ,{expiresIn : '10m'})
 
-        defaultRes(res , 200 , "ok" , createAccountRes)
+        defaultRes(res , 200 , "account created successfully" , tokenToSend)       
         
     }
     catch(error){
@@ -150,5 +160,27 @@ async function HandelPhotoLike(req : Request , res : Response , next : NextFunct
     }
     
 }
+async function isTokenVerifyied(req : Request , res : Response , next : NextFunction){
 
-export {HandelCreateUserAccount , HandelUserLogin , HandelUploadPhoto , HandelAddComment , HandelPhotoLike}
+    try{
+
+        const tokenTocheck : string = req.body.token
+    
+        if(!tokenTocheck){
+            throw new CustomError("pls send token" , 400)
+        }
+        const isTokenValid = jwt.verify(tokenTocheck , SECRET_KEY)
+        
+        if(isTokenValid){
+            defaultRes(res , 200 , "token is valid" , '👍👍👍👍👍')
+        }
+       
+        
+    }
+    catch(error:any){
+        next(error)
+    }
+    
+}
+
+export {HandelCreateUserAccount , HandelUserLogin , HandelUploadPhoto , HandelAddComment , HandelPhotoLike , isTokenVerifyied}

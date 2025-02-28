@@ -3,7 +3,7 @@ import { validateCreateAccountReq , validateUserLoginReq ,validateUploadPhoto , 
 
 
 const router = express.Router()
-import { HandelCreateUserAccount , HandelUserLogin , HandelUploadPhoto , HandelAddComment , HandelPhotoLike } from "../controller";
+import { HandelCreateUserAccount , HandelUserLogin , HandelUploadPhoto , HandelAddComment , HandelPhotoLike , isTokenVerifyied } from "../controller";
 import { checkAuth, defaultErr, wrongPath } from "../middleware";
 
 
@@ -16,6 +16,8 @@ router.post('/uploadPhoto' ,  validateUploadPhoto ,checkAuth , HandelUploadPhoto
 router.post('/comment' ,  validateComment ,checkAuth , HandelAddComment)
 
 router.put('/like' ,  validateLike ,checkAuth , HandelPhotoLike)
+
+router.post('/verifyToken' , isTokenVerifyied)
 
 
 
